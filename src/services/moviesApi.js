@@ -1,9 +1,10 @@
+const token = import.meta.env.VITE_TMDB_API_TOKEN;
+
 const options = {
 	method: "GET",
 	headers: {
 		accept: "application/json",
-		Authorization:
-			"Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJiNzVjNTFiYmQxYWI2MmJkMWI5MTBjMDU4YzI2Mjk4MiIsIm5iZiI6MTcyMzc2MjE4Mi41MDk1MTcsInN1YiI6IjY2YWMyOGNkNzEyYzRlNzA5ZDZjMjkwNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Wdh2hQ0yfY775Z_HLX-0RujYL97YfcjAnQkBJC-OWAg",
+		Authorization: `Bearer ${token}`,
 	},
 };
 
