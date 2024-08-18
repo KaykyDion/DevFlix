@@ -1,19 +1,19 @@
-import React from "react";
-import Header from "./components/Header";
-import { GlobalStyle } from "./globalStyle";
+
 import { ThemeProvider } from "styled-components";
+import { getMoviesByListName, listNames } from "./services/moviesApi";
 import { theme } from "./theme/theme";
+import { GlobalStyle } from "./globalStyle";
+import Header from "./components/Header";
 
 function App() {
-  return (
-    <ThemeProvider theme={theme}>
-      <GlobalStyle />
+	getMoviesByListName(listNames.popular);
+	return (
+		<ThemeProvider theme={theme}>
+			<GlobalStyle />
       <Header />
-      <main>
-        {}
-      </main>
-    </ThemeProvider>
-  );
+			<h1>Olá mundo</h1>
+		</ThemeProvider>
+	);
 }
 
 export default App;
