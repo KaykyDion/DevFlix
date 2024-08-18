@@ -1,6 +1,5 @@
 import { createGlobalStyle } from "styled-components";
 
-
 export const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
@@ -9,6 +8,12 @@ export const GlobalStyle = createGlobalStyle`
     font-family: "Roboto", sans-serif;
     list-style: none;
   }
+
+	.container {
+		max-width: 1024px;
+		width: 100%;
+		margin: 0 auto;
+	}
 
   body {
     background-color: ${({ theme }) => theme.colors.background};
@@ -25,4 +30,3 @@ export const GlobalStyle = createGlobalStyle`
     color: inherit;
   }
 `;
-
