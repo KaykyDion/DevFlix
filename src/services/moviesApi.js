@@ -12,13 +12,14 @@ export const listNames = {
 	nowPlaying: "now_playing",
 	popular: "popular",
 	topRated: "top_rated",
+	upcoming: "upcoming",
 };
 
 export const getMoviesByListName = (ListName) => {
-	fetch(
+	return fetch(
 		`https://api.themoviedb.org/3/movie/${ListName}?language=pt-BR&page=1`,
 		options
 	)
 		.then((res) => res.json())
-		.then((res) => console.log(res.results));
+		.then((res) => res);
 };
