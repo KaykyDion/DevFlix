@@ -3,8 +3,11 @@ import styled from "styled-components";
 export const Nav = styled.nav`
   display: flex;
   justify-content: space-around;
-  background-color: ${({ theme }) => theme.colors.secondary};
+  background-color: ${({ theme }) => theme.colors.primary};
   padding: 10px 0;
+  width: 60%;
+  border-radius: 20px;
+  margin-bottom: 40px;
 `;
 
 export const NavItem = styled.a`
@@ -15,4 +18,4 @@ export const NavItem = styled.a`
   &:hover {
     text-decoration: underline;
   }
-`;
+`;  

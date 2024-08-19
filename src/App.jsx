@@ -9,11 +9,11 @@ function App() {
 	getMoviesByListName(listNames.popular);
 	return (
 		<ThemeProvider theme={theme}>
+		<Header />
 			<GlobalStyle />
-			<div className="container">
-				<Header />
+			<main className="container">
 				<MovieItem title="Twisters" cardImg="https://placehold.co/180x220" />
-			</div>
+			</main>
 		</ThemeProvider>
 	);
 }
