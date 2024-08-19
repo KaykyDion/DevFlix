@@ -8,14 +8,14 @@ import { listNames } from "./services/moviesApi";
 function App() {
 	return (
 		<ThemeProvider theme={theme}>
+		<Header />
 			<GlobalStyle />
-			<div className="container">
-				<Header />
-				<MovieList title="Populares" listName={listNames.popular} />
+			<main className="container">
+        <MovieList title="Populares" listName={listNames.popular} />
 				<MovieList title="Maiores Notas" listName={listNames.topRated} />
 				<MovieList title="Lançamentos" listName={listNames.nowPlaying} />
 				<MovieList title="Em Breve" listName={listNames.upcoming} />
-			</div>
+			</main>
 		</ThemeProvider>
 	);
 }
