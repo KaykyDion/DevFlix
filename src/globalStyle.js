@@ -20,13 +20,27 @@ export const GlobalStyle = createGlobalStyle`
     color: ${({ theme }) => theme.colors.text};
   }
 
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-
   a {
     text-decoration: none;
     color: inherit;
   }
+
+	::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: ${({ theme }) => theme.colors.scrollBarColor};
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f9f9f9;
+}
 `;

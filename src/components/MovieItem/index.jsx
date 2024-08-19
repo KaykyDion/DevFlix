@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 const MovieItem = ({ cardImg, title }) => {
 	return (
 		<MovieCard title={title}>
-			<a href="https://www.youtube.com">
+			<a href="#">
 				<img src={cardImg} alt={title} />
 			</a>
 		</MovieCard>
