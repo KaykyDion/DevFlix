@@ -7,15 +7,16 @@ import { listNames } from "./services/moviesApi";
 import Footer from "./components/Footer";
 
 function App() {
+
 	return (
 		<ThemeProvider theme={theme}>
 			<Header />
 			<GlobalStyle />
 			<main className="container">
-				<MovieList title="Populares" listName={listNames.popular} />
-				<MovieList title="Maiores Notas" listName={listNames.topRated} />
-				<MovieList title="Lançamentos" listName={listNames.nowPlaying} />
-				<MovieList title="Em Breve" listName={listNames.upcoming} />
+				<MovieList id="popular" title="Populares" listName={listNames.popular} />
+				<MovieList id="topRated" title="Maiores Notas" listName={listNames.topRated} />
+				<MovieList id="nowPlaying" title="Lançamentos" listName={listNames.nowPlaying} />
+				<MovieList id="upcoming" title="Em Breve" listName={listNames.upcoming} />
 			</main>
 			<Footer />
 		</ThemeProvider>
