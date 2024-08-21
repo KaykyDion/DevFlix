@@ -4,28 +4,23 @@ import { GlobalStyle } from "./globalStyle";
 import Header from "./components/Header";
 import MovieList from "./containers/MovieList";
 import { listNames } from "./services/moviesApi";
+import Footer from "./components/Footer";
 
 function App() {
-    return (
-        <ThemeProvider theme={theme}>
-            <Header />
-            <GlobalStyle />
-            <main className="container">
-                <div id="popular">
-                    <MovieList title="Populares" listName={listNames.popular} />
-                </div>
-                <div id="topRated">
-                    <MovieList title="Maiores Notas" listName={listNames.topRated} />
-                </div>
-                <div id="nowPlaying">
-                    <MovieList title="Lançamentos" listName={listNames.nowPlaying} />
-                </div>
-                <div id="upcoming">
-                    <MovieList title="Em Breve" listName={listNames.upcoming} />
-                </div>
-            </main>
-        </ThemeProvider>
-    );
+
+	return (
+		<ThemeProvider theme={theme}>
+			<Header />
+			<GlobalStyle />
+			<main className="container">
+				<MovieList id="popular" title="Populares" listName={listNames.popular} />
+				<MovieList id="topRated" title="Maiores Notas" listName={listNames.topRated} />
+				<MovieList id="nowPlaying" title="Lançamentos" listName={listNames.nowPlaying} />
+				<MovieList id="upcoming" title="Em Breve" listName={listNames.upcoming} />
+			</main>
+			<Footer />
+		</ThemeProvider>
+	);
 }
 
 export default App;

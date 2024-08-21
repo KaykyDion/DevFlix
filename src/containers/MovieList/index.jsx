@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import MovieItem from "../../components/MovieItem";
-import { CardContainer } from "./styles";
+import { CardContainer, LoaderContainer } from "./styles";
 import PropTypes from "prop-types";
 import { getMoviesByListName } from "../../services/moviesApi";
+import LoadingItem from "../../components/LoadingItem";
 
 const MovieList = ({ title, listName }) => {
 	const [movies, setMovies] = useState([]);
@@ -23,7 +24,9 @@ const MovieList = ({ title, listName }) => {
 		<section>
 			<h2>{title}</h2>
 			{isLoading ? (
-				<h3>Loading....</h3>
+				<LoaderContainer>
+					<LoadingItem />
+				</LoaderContainer>
 			) : (
 				<CardContainer>
 					{movies.map((item) => (
