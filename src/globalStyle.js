@@ -7,6 +7,11 @@ export const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-family: "Roboto", sans-serif;
     list-style: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    cursor: default;
   }
 
 	.container {
