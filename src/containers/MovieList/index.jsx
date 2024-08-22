@@ -5,23 +5,27 @@ import PropTypes from "prop-types";
 import { getMoviesByListName } from "../../services/moviesApi";
 import LoadingItem from "../../components/LoadingItem";
 
-const MovieList = ({ title, listName }) => {
+const MovieList = ({ id, title, listName }) => {
 	const [movies, setMovies] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
 		const fetchMovies = async () => {
-			await getMoviesByListName(listName).then(({ results }) => {
-				setIsLoading(false);
+			try {
+				const { results } = await getMoviesByListName(listName);
 				setMovies(results);
-			});
+			} catch (error) {
+				console.error("Failed to fetch movies:", error);
+			} finally {
+				setIsLoading(false);
+			}
 		};
 
 		fetchMovies();
 	}, [listName]);
 
 	return (
-		<section>
+		<section id={id}>
 			<h2>{title}</h2>
 			{isLoading ? (
 				<LoaderContainer>
@@ -33,7 +37,7 @@ const MovieList = ({ title, listName }) => {
 						<MovieItem
 							title={item.title}
 							cardImg={`https://image.tmdb.org/t/p/w300/${item.poster_path}`}
-							key={item.title}
+							key={item.id}  // Preferível usar `id` ao invés de `title` como chave
 						/>
 					))}
 				</CardContainer>
@@ -43,8 +47,9 @@ const MovieList = ({ title, listName }) => {
 };
 
 MovieList.propTypes = {
-	title: PropTypes.string,
-	listName: PropTypes.string,
+	id: PropTypes.string.isRequired,
+	title: PropTypes.string.isRequired,
+	listName: PropTypes.string.isRequired
 };
 
 export default MovieList;
