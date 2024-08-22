@@ -1,12 +1,10 @@
 import { MovieCard } from "./styles";
 import PropTypes from "prop-types";
 
-const MovieItem = ({ cardImg, title }) => {
+const MovieItem = ({ cardImg, title, onClick }) => {
 	return (
-		<MovieCard title={title}>
-			<a href="#">
-				<img src={cardImg} alt={title} />
-			</a>
+		<MovieCard title={title} onClick={onClick}>
+			<img src={cardImg} alt={title} />
 		</MovieCard>
 	);
 };
@@ -14,6 +12,7 @@ const MovieItem = ({ cardImg, title }) => {
 MovieItem.propTypes = {
 	cardImg: PropTypes.string,
 	title: PropTypes.string,
+	onclick: PropTypes.func,
 };
 
 export default MovieItem;
