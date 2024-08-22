@@ -8,7 +8,6 @@ export const GlobalStyle = createGlobalStyle`
     font-family: "Roboto", sans-serif;
     list-style: none;
     -webkit-user-drag: none;
-    -webkit-user-drag: none;
     -moz-user-drag: none;
     -ms-user-drag: none;
     cursor: default;
