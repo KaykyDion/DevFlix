@@ -37,7 +37,7 @@ export const SearchBar = styled.input`
   padding: 8px;
   width: 200px;
   border-radius: 4px;
-  color: ${({ theme }) => theme.colors.searchText};
+  color: ${({ theme }) => theme.colors.blackText};
   box-sizing: border-box;
 
   &:focus {
