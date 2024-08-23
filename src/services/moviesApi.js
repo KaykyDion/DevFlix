@@ -21,5 +21,4 @@ export const getMoviesByListName = (ListName) => {
 		options
 	)
 		.then((res) => res.json())
-		.then((res) => res);
 };

@@ -1,9 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { HeaderStyle, HeaderTop, SearchBar, SettingsIcon, Logo, Button, NavItem, NavContainer } from './styles';
 import logo from '../../assets/images/logo.png';
 import settingsIcon from '../../assets/images/settingsIcon.png';
+import Configurations from '../Configurations';
 
 const HeaderComponent = () => {
+  const [isConfigOpen, setIsConfigOpen] = useState(false);
+
+  const toggleConfigurations = () => {
+    setIsConfigOpen(prevState => !prevState);
+  };
+
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -25,9 +32,12 @@ const HeaderComponent = () => {
         </NavContainer>
         <div>
           <SearchBar type="text" placeholder="Pesquisar" />
-          <Button><SettingsIcon src={settingsIcon} alt="Configuração" /></Button>
+          <Button onClick={toggleConfigurations}>
+            <SettingsIcon src={settingsIcon} alt="Configuração" />
+          </Button>
         </div>
       </HeaderTop>
+      <Configurations isOpen={isConfigOpen} onClose={toggleConfigurations} />
     </HeaderStyle>
   );
 };
