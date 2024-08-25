@@ -36,8 +36,9 @@ const MovieList = ({ id, title, listName }) => {
 					{movies.map((item) => (
 						<MovieItem
 							title={item.title}
-							cardImg={`https://image.tmdb.org/t/p/w300/${item.poster_path}`}
-							key={item.id}  // Preferível usar `id` ao invés de `title` como chave
+							cardImg={item.poster_path}
+							id={item.id}
+							key={item.id}
 						/>
 					))}
 				</CardContainer>
@@ -49,7 +50,7 @@ const MovieList = ({ id, title, listName }) => {
 MovieList.propTypes = {
 	id: PropTypes.string.isRequired,
 	title: PropTypes.string.isRequired,
-	listName: PropTypes.string.isRequired
+	listName: PropTypes.string.isRequired,
 };
 
 export default MovieList;

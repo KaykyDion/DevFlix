@@ -19,6 +19,12 @@ export const getMoviesByListName = (ListName) => {
 	return fetch(
 		`https://api.themoviedb.org/3/movie/${ListName}?language=pt-BR&page=1`,
 		options
-	)
-		.then((res) => res.json())
+	).then((res) => res.json());
+};
+
+export const getMovieById = (movieId) => {
+	return fetch(
+		`https://api.themoviedb.org/3/movie/${movieId}?language=pt-BR`,
+		options
+	).then((response) => response.json());
 };
