@@ -6,5 +6,6 @@ export const theme = {
 		blackText: "#000000",
 		secondary: "#cc00cc",
 		scrollBarColor: "#D9D9D9",
+		backgroundSecondary: "#000089",
 	},
 };
