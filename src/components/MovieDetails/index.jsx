@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import playIcon from "../../assets/images/play-icon.svg";
 import formatDate from "../../utils/formatDate";
 import minutesToHours from "../../utils/minutesToHours";
+import { Container, Infos, Overview, PlayBtn } from "./styles";
 
 export const MovieDetails = ({
 	backDropImg,
@@ -14,32 +15,32 @@ export const MovieDetails = ({
 	voteAverage,
 }) => {
 	const date = formatDate(releaseDate.split("-").join("/"));
-	const genresList = genres.map((genre) => `${genre.name}`).join(", ");
+	const movieGenres = genres.map((genre) => `${genre.name}`).join(", ");
 	const movieRuntime = minutesToHours(runtime);
 
 	return (
-		<section
+		<Container
 			style={{
-				backgroundImage: `url(https://image.tmdb.org/t/p/w500/${backDropImg})`,
+				backgroundImage: `url(https://image.tmdb.org/t/p/w1280/${backDropImg})`,
 			}}
 		>
 			<img src={`https://image.tmdb.org/t/p/w300/${posterImg}`} alt={title} />
 			<div>
-				<div>
+				<Infos>
 					<h2>{title}</h2>
 					<strong>
-						Nota: [ {voteAverage} ] - {date} - {genresList} - {movieRuntime}
+						Nota: [ {voteAverage} ] {date} - {movieGenres} - {movieRuntime}
 					</strong>
-				</div>
-				<div>
-					<button>
-						<img src={playIcon} alt="ícone de reprodução" /> Reproduzir trailer
-					</button>
+				</Infos>
+				<PlayBtn>
+					<img src={playIcon} alt="ícone de reprodução" /> Reproduzir trailer
+				</PlayBtn>
+				<Overview>
 					<h3>Sinopse</h3>
 					<p>{overview}</p>
-				</div>
+				</Overview>
 			</div>
-		</section>
+		</Container>
 	);
 };
 
@@ -51,7 +52,7 @@ MovieDetails.propTypes = {
 	overview: PropTypes.string,
 	runtime: PropTypes.number,
 	releaseDate: PropTypes.string,
-	voteAverage: PropTypes.string,
+	voteAverage: PropTypes.number,
 };
 
 export default MovieDetails;
