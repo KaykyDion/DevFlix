@@ -25,5 +25,6 @@ const HeaderComponent = () => {
       <Configurations isOpen={isConfigurationsOpen} onClose={toggleConfigurations} />
     </HeaderStyle>
   );
+}
 
 export default HeaderComponent;
