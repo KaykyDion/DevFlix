@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { HeaderStyle, HeaderTop, SearchBar, SettingsIcon, Logo, Button } from './styles';
 import logo from '../../assets/images/logo.png';
 import settingsIcon from '../../assets/images/settingsIcon.png';
@@ -25,6 +25,5 @@ const HeaderComponent = () => {
       <Configurations isOpen={isConfigurationsOpen} onClose={toggleConfigurations} />
     </HeaderStyle>
   );
-};
 
 export default HeaderComponent;
