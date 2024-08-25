@@ -1,10 +1,13 @@
+import { Link } from "react-router-dom";
 import { MovieCard } from "./styles";
 import PropTypes from "prop-types";
 
-const MovieItem = ({ cardImg, title, onClick }) => {
+const MovieItem = ({ cardImg, title, id }) => {
 	return (
-		<MovieCard title={title} onClick={onClick}>
-			<img src={cardImg} alt={title} />
+		<MovieCard title={title}>
+			<Link to={`/${id}`}>
+				<img src={`https://image.tmdb.org/t/p/w300/${cardImg}`} alt={title} />
+			</Link>
 		</MovieCard>
 	);
 };
@@ -12,7 +15,7 @@ const MovieItem = ({ cardImg, title, onClick }) => {
 MovieItem.propTypes = {
 	cardImg: PropTypes.string,
 	title: PropTypes.string,
-	onclick: PropTypes.func,
+	id: PropTypes.number,
 };
 
 export default MovieItem;
