@@ -2,17 +2,15 @@ import styled from 'styled-components';
 
 export const ModalOverlay = styled.div`
   position: fixed;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: flex-end;
-  pointer-events: none;
-  padding-right: 25px;
-  padding-top: 80px;
   z-index: 1000;
+  padding-top: 70px;
+  padding-right: 20%;
+  display: flex;
+  justify-content: end;
+
 `;
 
 export const ModalContainer = styled.div`
