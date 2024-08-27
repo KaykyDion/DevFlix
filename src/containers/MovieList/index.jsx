@@ -5,24 +5,28 @@ import PropTypes from "prop-types";
 import { getMoviesByListName } from "../../services/moviesApi";
 import LoadingItem from "../../components/LoadingItem";
 
-const MovieList = ({ id, title, listName }) => {
+const MovieList = ({ id, title, listName, movieList }) => {
 	const [movies, setMovies] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
-		const fetchMovies = async () => {
-			try {
-				const { results } = await getMoviesByListName(listName);
-				setMovies(results);
-			} catch (error) {
-				console.error("Failed to fetch movies:", error);
-			} finally {
-				setIsLoading(false);
-			}
-		};
-
-		fetchMovies();
-	}, [listName]);
+		if (listName) {
+			const fetchMovies = async () => {
+				try {
+					const { results } = await getMoviesByListName(listName);
+					setMovies(results);
+				} catch (error) {
+					console.error("Failed to fetch movies:", error);
+				} finally {
+					setIsLoading(false);
+				}
+			};
+			fetchMovies();
+		} else {
+			setMovies(movieList);
+			setIsLoading(false);
+		}
+	}, [listName, movieList]);
 
 	return (
 		<section id={id}>
@@ -50,7 +54,8 @@ const MovieList = ({ id, title, listName }) => {
 MovieList.propTypes = {
 	id: PropTypes.string.isRequired,
 	title: PropTypes.string.isRequired,
-	listName: PropTypes.string.isRequired,
+	listName: PropTypes.string,
+	movieList: PropTypes.array,
 };
 
 export default MovieList;

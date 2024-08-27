@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getMovieById, listNames } from "../../services/moviesApi";
+import { getMovieById, getSimilarMovies } from "../../services/moviesApi";
 import LoadingItem from "../../components/LoadingItem";
 import { LoaderContainer } from "./styles";
 import MovieDetails from "../../components/MovieDetails";
@@ -9,15 +9,16 @@ import MovieList from "../../containers/MovieList";
 const MoviePage = () => {
 	const { movieId } = useParams();
 	const [movie, setMovie] = useState({});
+	const [similarMovies, setSimilarMovies] = useState({});
 	const [IsLoading, setIsLoading] = useState(true);
-	console.log(movieId);
 
 	useEffect(() => {
 		const fetchMovie = async () => {
 			try {
 				const response = await getMovieById(movieId);
+				const { results } = await getSimilarMovies(movieId);
 				setMovie(response);
-				console.log(response);
+				setSimilarMovies(results);
 				setIsLoading(false);
 			} catch (error) {
 				console.log(`Failed to fetch movie:`, movieId);
@@ -46,9 +47,9 @@ const MoviePage = () => {
 						voteAverage={movie.vote_average}
 					/>
 					<MovieList
-						title="Recomendados"
-						listName={listNames.popular}
-						id="recomendados"
+						title="Relacionados"
+						movieList={similarMovies}
+						id="similars"
 					/>
 				</>
 			)}

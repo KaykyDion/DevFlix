@@ -15,16 +15,23 @@ export const listNames = {
 	upcoming: "upcoming",
 };
 
-export const getMoviesByListName = (ListName) => {
+export const getMoviesByListName = async (ListName) => {
 	return fetch(
 		`https://api.themoviedb.org/3/movie/${ListName}?language=pt-BR&page=1`,
 		options
 	).then((res) => res.json());
 };
 
-export const getMovieById = (movieId) => {
+export const getMovieById = async (movieId) => {
 	return fetch(
 		`https://api.themoviedb.org/3/movie/${movieId}?language=pt-BR`,
+		options
+	).then((response) => response.json());
+};
+
+export const getSimilarMovies = async (movieId) => {
+	return fetch(
+		`https://api.themoviedb.org/3/movie/${movieId}/similar?language=pt-BR&page=1`,
 		options
 	).then((response) => response.json());
 };
