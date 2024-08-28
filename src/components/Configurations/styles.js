@@ -6,9 +6,10 @@ export const ModalOverlay = styled.div`
 	height: 100%;
 	background: rgba(0, 0, 0, 0.5);
 	z-index: 1000;
-	padding-top: 70px;
+	padding-top: 80px;
 	padding-right: 20%;
 	display: flex;
+	top: 0;
 	justify-content: end;
 `;
 

@@ -3,13 +3,13 @@ import { SwitchContainer, SwitchInput, SwitchKnob } from "./styles";
 
 const SwitchButton = ({ isChecked, handleToggle }) => {
 	return (
-		<SwitchContainer onClick={handleToggle}>
+		<SwitchContainer onClick={handleToggle} $isChecked={isChecked}>
 			<SwitchInput
 				type="checkbox"
 				checked={isChecked}
 				onChange={handleToggle}
 			/>
-			<SwitchKnob isChecked={isChecked} />
+			<SwitchKnob $isChecked={isChecked} />
 		</SwitchContainer>
 	);
 };

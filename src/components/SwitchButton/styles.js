@@ -4,7 +4,7 @@ export const SwitchContainer = styled.div`
 	position: relative;
 	width: 60px;
 	height: 30px;
-	background-color: ${(props) => (props.isChecked ? "#4caf50" : "#ccc")};
+	background-color: ${(props) => (props.$isChecked ? "#4caf50" : "#ccc")};
 	border-radius: 30px;
 	display: flex;
 	align-items: center;
@@ -26,7 +26,7 @@ export const SwitchInput = styled.input`
 export const SwitchKnob = styled.div`
 	position: absolute;
 	top: 50%;
-	left: ${(props) => (props.isChecked ? "calc(100% - 26px)" : "2px")};
+	left: ${(props) => (props.$isChecked ? "calc(100% - 26px)" : "2px")};
 	width: 24px;
 	height: 24px;
 	background-color: #fff;
@@ -41,7 +41,7 @@ export const SwitchKnob = styled.div`
 		left: 50%;
 		width: 8px;
 		height: 8px;
-		background-color: ${(props) => (props.isChecked ? "#38b6ff" : "#ff3131")};
+		background-color: ${(props) => (props.$isChecked ? "#38b6ff" : "#ff3131")};
 		border-radius: 50%;
 		transform: translate(-50%, -50%);
 	}
