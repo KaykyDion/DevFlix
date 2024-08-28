@@ -6,6 +6,7 @@ export const MovieCard = styled.li`
 	min-height: 220px;
 	transition: 0.4s;
 	cursor: pointer;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 
 	&:hover {
 		transform: translateY(-4px);

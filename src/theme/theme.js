@@ -1,11 +1,19 @@
-export const theme = {
+export const darkTheme = {
 	colors: {
-		primary: "#000033",
 		background: "#00050D",
-		text: "#fff",
-		blackText: "#000000",
-		secondary: "#cc00cc",
+		text: "#e7f0f8",
+		primary: "#000089",
+		secondary: "#ff15ff",
 		scrollBarColor: "#D9D9D9",
-		backgroundSecondary: "#000089",
+	},
+};
+
+export const lightTheme = {
+	colors: {
+		background: "#FEFEFF",
+		text: "#23272F",
+		primary: "#000089",
+		secondary: "#ff15ff",
+		scrollBarColor: "#23272F",
 	},
 };

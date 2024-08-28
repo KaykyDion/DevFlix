@@ -21,6 +21,7 @@ export const GlobalStyle = createGlobalStyle`
   body {
     background-color: ${({ theme }) => theme.colors.background};
     color: ${({ theme }) => theme.colors.text};
+		transition: 0.3s;
   }
 
   a {
@@ -41,9 +42,5 @@ export const GlobalStyle = createGlobalStyle`
 ::-webkit-scrollbar-thumb {
   background: ${({ theme }) => theme.colors.scrollBarColor};
   border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #f9f9f9;
 }
 `;

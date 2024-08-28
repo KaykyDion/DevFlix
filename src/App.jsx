@@ -1,12 +1,16 @@
 import { ThemeProvider } from "styled-components";
-import { theme } from "./theme/theme";
+import { darkTheme, lightTheme } from "./theme/theme";
 import { GlobalStyle } from "./globalStyle";
 import { RouterProvider } from "react-router-dom";
 import router from "./router";
+import { ToggleThemeContext } from "./contexts/ToggleThemeContext";
+import { useContext } from "react";
 
 function App() {
+	const { usingDarkTheme } = useContext(ToggleThemeContext);
+
 	return (
-		<ThemeProvider theme={theme}>
+		<ThemeProvider theme={usingDarkTheme ? darkTheme : lightTheme}>
 			<GlobalStyle />
 			<RouterProvider router={router} />
 		</ThemeProvider>

@@ -8,7 +8,9 @@ export const Container = styled.section`
 	border-radius: 20px;
 	padding: 60px;
 	background-position: center;
-	margin-bottom: 20px;
+	margin: 20px 0;
+	color: #e7f0f8;
+	box-shadow: 0 8px 12px rgba(0, 0, 0, 0.6);
 
 	* {
 		z-index: 2;
@@ -48,7 +50,7 @@ export const PlayBtn = styled.button`
 	cursor: pointer;
 	font-weight: bold;
 	font-size: 14px;
-	color: ${({ theme }) => theme.colors.text};
+	color: #e7f0f8;
 	display: flex;
 	align-items: center;
 	margin-bottom: 40px;
@@ -68,6 +70,6 @@ export const Overview = styled.div`
 	p {
 		line-height: 24px;
 		max-width: 1000px;
-		color: ${({ theme }) => theme.colors.text};
+		color: #e7f0f8;
 	}
 `;
