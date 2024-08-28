@@ -1,20 +1,22 @@
-import React, { useState } from 'react';
-import { SwitchContainer, SwitchInput, SwitchKnob } from './styles';
+import PropTypes from "prop-types";
+import { SwitchContainer, SwitchInput, SwitchKnob } from "./styles";
 
-const SwitchButton = ({ onClick }) => {
-  const [isChecked, setIsChecked] = useState(false);
+const SwitchButton = ({ isChecked, handleToggle }) => {
+	return (
+		<SwitchContainer onClick={handleToggle}>
+			<SwitchInput
+				type="checkbox"
+				checked={isChecked}
+				onChange={handleToggle}
+			/>
+			<SwitchKnob isChecked={isChecked} />
+		</SwitchContainer>
+	);
+};
 
-  const handleToggle = () => {
-    setIsChecked(!isChecked);
-    if (onClick) onClick();
-  };
-
-  return (
-    <SwitchContainer onClick={handleToggle}>
-      <SwitchInput type="checkbox" checked={isChecked} onChange={handleToggle} />
-      <SwitchKnob isChecked={isChecked} />
-    </SwitchContainer>
-  );
+SwitchButton.propTypes = {
+	isChecked: PropTypes.bool,
+	handleToggle: PropTypes.func,
 };
 
 export default SwitchButton;
