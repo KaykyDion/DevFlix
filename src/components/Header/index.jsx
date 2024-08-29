@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
 	HeaderStyle,
 	HeaderTop,
@@ -14,9 +15,17 @@ import { Link } from "react-router-dom";
 
 const HeaderComponent = () => {
 	const [isConfigurationsOpen, setIsConfigurationsOpen] = useState(false);
+	const [searchTerm, setSearchTerm] = useState("");
+	const navigate = useNavigate();
 
 	const toggleConfigurations = () => {
 		setIsConfigurationsOpen((prevState) => !prevState);
+	};
+
+	const handleSearch = (e) => {
+		if (e.key === "Enter" && searchTerm.trim()) {
+			navigate(`/search?query=${searchTerm}`);
+		}
 	};
 
 	return (
@@ -28,7 +37,13 @@ const HeaderComponent = () => {
 					</Link>
 				</h1>
 				<div>
-					<SearchBar type="text" placeholder="Pesquisar" />
+					<SearchBar
+						type="text"
+						placeholder="Pesquisar"
+						value={searchTerm}
+						onChange={(e) => setSearchTerm(e.target.value)}
+						onKeyDown={handleSearch}
+					/>
 					<Button onClick={toggleConfigurations}>
 						<SettingsIcon src={settingsIcon} alt="Configuração" />
 					</Button>

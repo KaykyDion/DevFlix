@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const MovieCard = styled.li`
+	width: 200px;
 	border-radius: 10px;
 	min-width: 180px;
 	min-height: 220px;
