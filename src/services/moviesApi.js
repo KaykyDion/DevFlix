@@ -35,3 +35,8 @@ export const getSimilarMovies = async (movieId) => {
 		options
 	).then((response) => response.json());
 };
+
+export const fetchMovies = async (endpoint) => {
+	return fetch(`https://api.themoviedb.org/3/${endpoint}`, options)
+	  .then((res) => res.json());
+};
