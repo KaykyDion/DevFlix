@@ -2,43 +2,62 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { fetchMovies } from '../../services/moviesApi';
 import MovieItem from "../../components/MovieItem";
-import { MoviesGrid } from './styles';
+import { MoviesGrid, Result } from './styles';
+import LoadMoreButton from '../../components/LoadMoreButton';
+import { ButtonWrapper } from '../../components/LoadMoreButton/styles';
 
 const SearchResults = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query');
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+
+  const fetchData = async (pageNum) => {
+    try {
+      const response = await fetchMovies(`search/movie?query=${query}&include_adult=false&language=pt-BR&page=${pageNum}`);
+      setMovies((prevMovies) => pageNum === 1 ? response.results : [...prevMovies, ...response.results]);
+      setHasMore(response.page < response.total_pages);
+    } catch (error) {
+      console.error('Erro ao buscar filmes:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetchMovies(`search/movie?query=${query}&include_adult=false&language=pt-BR&page=1`);
-        setMovies(response.results);
-      } catch (error) {
-        console.error('Erro ao buscar filmes:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     if (query) {
-      fetchData();
+      setPage(1);
+      setMovies([]);
+      setHasMore(true);
+      setLoading(true);
+      fetchData(1);
     }
   }, [query]);
 
-  if (loading) {
+  useEffect(() => {
+    if (query && page > 1) {
+      fetchData(page);
+    }
+  }, [page]);
+
+  const handleLoadMore = () => {
+    setPage((prevPage) => prevPage + 1);
+  };
+
+  if (loading && page === 1) {
     return <p>Carregando...</p>;
   }
 
-  if (movies.length === 0) {
+  if (movies.length === 0 && !loading) {
     return <p>Nenhum filme encontrado para "{query}".</p>;
   }
 
   return (
     <div>
-      <h1>Resultados da pesquisa para "{query}"</h1>
-      <MoviesGrid> {}
+      <Result>Resultados da pesquisa para "{query}"</Result>
+      <MoviesGrid>
         {movies.map(movie => (
           <MovieItem
             key={movie.id}
@@ -48,6 +67,11 @@ const SearchResults = () => {
           />
         ))}
       </MoviesGrid>
+      {hasMore && !loading && (
+        <ButtonWrapper>
+          <LoadMoreButton onClick={handleLoadMore} />
+        </ButtonWrapper>
+      )}
     </div>
   );
 };
