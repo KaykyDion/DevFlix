@@ -35,10 +35,12 @@ export const MovieDetails = ({
 				<PlayBtn>
 					<img src={playIcon} alt="ícone de reprodução" /> Reproduzir trailer
 				</PlayBtn>
-				<Overview>
-					<h3>Sinopse</h3>
-					<p>{overview}</p>
-				</Overview>
+				{overview && (
+					<Overview>
+						<h3>Sinopse</h3>
+						<p>{overview}</p>
+					</Overview>
+				)}
 			</div>
 		</Container>
 	);
