@@ -14,5 +14,6 @@ export const Container = styled.footer`
 
 	a {
 		color: ${({ theme }) => theme.colors.secondary};
+		text-decoration: underline;
 	}
 `;

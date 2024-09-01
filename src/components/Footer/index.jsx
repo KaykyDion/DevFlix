@@ -6,8 +6,16 @@ const Footer = () => (
 		<img src={logo} alt="Logo DevFlix" />
 		<p>
 			Desenvolvido por{" "}
-			<a href="https://www.linkedin.com/in/kayky-dion-b67b59235/">KaykyDion</a>{" "}
-			& <a href="https://virtual-business-card-ten.vercel.app/">IgorRian</a>
+			<a
+				target="_blank"
+				href="https://www.linkedin.com/in/kayky-dion-b67b59235/"
+			>
+				KaykyDion
+			</a>{" "}
+			&{" "}
+			<a target="_blank" href="https://virtual-business-card-ten.vercel.app/">
+				IgorRian
+			</a>
 		</p>
 	</Container>
 );

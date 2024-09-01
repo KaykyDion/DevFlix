@@ -6,10 +6,14 @@ export const NavContainer = styled.nav`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 30%;
+	width: 60%;
 	margin: 0 auto;
 	margin-top: 15px;
 	border-radius: 20px;
+
+	@media (max-width: 768px) {
+		width: 95%;
+	}
 `;
 
 export const NavItem = styled.a`
@@ -22,6 +26,17 @@ export const NavItem = styled.a`
 	text-align: center;
 	margin: 0 10px;
 	transition: transform 0.3s ease, background-color 0.3s ease;
+
+	@media (max-width: 768px) {
+		padding: 6px 4px;
+		margin: 0 6px;
+		font-size: 12px;
+		white-space: nowrap;
+	}
+
+	@media (max-width: 360px) {
+		white-space: normal;
+	}
 
 	&:hover {
 		transform: translateY(-4px);
