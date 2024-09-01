@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getMovieById, getSimilarMovies } from "../../services/moviesApi";
+import {
+	getMovieById,
+	getMovieTrailer,
+	getSimilarMovies,
+} from "../../services/moviesApi";
 import LoadingItem from "../../components/LoadingItem";
 import { LoaderContainer } from "./styles";
 import MovieDetails from "../../components/MovieDetails";
@@ -8,8 +12,9 @@ import MovieList from "../../containers/MovieList";
 
 const MoviePage = () => {
 	const { movieId } = useParams();
-	const [movie, setMovie] = useState({});
-	const [similarMovies, setSimilarMovies] = useState({});
+	const [movie, setMovie] = useState();
+	const [similarMovies, setSimilarMovies] = useState();
+	const [movieTrailer, setMovieTrailer] = useState();
 	const [IsLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
@@ -17,7 +22,9 @@ const MoviePage = () => {
 			try {
 				const response = await getMovieById(movieId);
 				const { results } = await getSimilarMovies(movieId);
+				const trailer = await getMovieTrailer(movieId);
 				setMovie(response);
+				setMovieTrailer(trailer.results[0]);
 				setSimilarMovies(results);
 				setIsLoading(false);
 			} catch (error) {
@@ -45,6 +52,7 @@ const MoviePage = () => {
 						title={movie.title}
 						releaseDate={movie.release_date}
 						voteAverage={movie.vote_average}
+						trailer={movieTrailer}
 					/>
 					<MovieList
 						title="Relacionados"

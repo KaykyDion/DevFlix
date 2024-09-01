@@ -9,6 +9,7 @@ export const NavContainer = styled.nav`
 	width: 60%;
 	margin: 0 auto;
 	margin-top: 15px;
+	margin-bottom: 20px;
 	border-radius: 20px;
 
 	@media (max-width: 768px) {
