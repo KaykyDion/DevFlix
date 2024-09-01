@@ -12,6 +12,13 @@ export const Container = styled.section`
 	color: #e7f0f8;
 	box-shadow: 0 8px 12px rgba(0, 0, 0, 0.6);
 
+	@media (max-width: 768px) {
+		flex-direction: column;
+		padding: 20px;
+		align-items: center;
+		text-align: center;
+	}
+
 	* {
 		z-index: 2;
 	}
@@ -20,6 +27,12 @@ export const Container = styled.section`
 		margin-right: 40px;
 		border-radius: 20px;
 		max-height: 450px;
+
+		@media (max-width: 768px) {
+			margin-right: 0;
+			margin-bottom: 16px;
+			max-height: 300px;
+		}
 	}
 
 	&::before {
@@ -38,6 +51,10 @@ export const Container = styled.section`
 export const Infos = styled.div`
 	margin-bottom: 80px;
 
+	@media (max-width: 768px) {
+		margin-bottom: 30px;
+	}
+
 	h2 {
 		font-size: 36px;
 		margin-bottom: 8px;
@@ -54,6 +71,10 @@ export const PlayBtn = styled.button`
 	display: flex;
 	align-items: center;
 	margin-bottom: 40px;
+
+	@media (max-width: 768px) {
+		margin-bottom: 30px;
+	}
 
 	img {
 		height: 40px;

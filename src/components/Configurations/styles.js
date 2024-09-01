@@ -7,10 +7,14 @@ export const ModalOverlay = styled.div`
 	background: rgba(0, 0, 0, 0.5);
 	z-index: 1000;
 	padding-top: 80px;
-	padding-right: 20%;
+	padding-right: 10%;
 	display: flex;
 	top: 0;
 	justify-content: end;
+
+	@media (max-width: 768px) {
+		padding-right: 0;
+	}
 `;
 
 export const ModalContainer = styled.div`

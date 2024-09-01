@@ -14,13 +14,22 @@ export const HeaderTop = styled.div`
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	width: 60%;
+	width: 80%;
 	border-radius: 20px;
+
+	@media (max-width: 768px) {
+		width: 100%;
+		padding: 24px 18px;
+	}
 
 	div {
 		display: flex;
 		align-items: center;
 		gap: 25px;
+
+		@media (max-width: 768px) {
+			gap: 8px;
+		}
 	}
 `;
 
@@ -28,10 +37,18 @@ export const SearchBar = styled.input`
 	padding: 8px 16px;
 	border: none;
 	border-radius: 4px;
+
+	@media (max-width: 768px) {
+		width: 120px;
+	}
 `;
 
 export const Logo = styled.img`
 	width: 150px;
+
+	@media (max-width: 768px) {
+		width: 120px;
+	}
 `;
 
 export const SettingsIcon = styled.img`
