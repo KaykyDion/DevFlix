@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import MoviePage from "./pages/MoviePage";
 import RootLayout from "./pages/RootLayout";
 import SearchResults from "./containers/SearchResults";
+import loadMovie from "./loaders/movie";
 
 const router = createBrowserRouter([
 	{
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
 			{
 				path: "/:movieId",
 				element: <MoviePage />,
+				loader: loadMovie,
 			},
 			{
 				path: "/search",

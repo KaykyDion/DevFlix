@@ -1,18 +1,15 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import {
-	getMovieById,
-	getMovieTrailer,
-	getSimilarMovies,
-} from "../../services/moviesApi";
+import { useLoaderData } from "react-router-dom";
+
+import { getMovieTrailer, getSimilarMovies } from "../../services/moviesApi";
 import LoadingItem from "../../components/LoadingItem";
 import { LoaderContainer } from "./styles";
 import MovieDetails from "../../components/MovieDetails";
 import MovieList from "../../containers/MovieList";
+import ErrorElement from "../../components/ErrorElement";
 
 const MoviePage = () => {
-	const { movieId } = useParams();
-	const [movie, setMovie] = useState();
+	const movie = useLoaderData();
 	const [similarMovies, setSimilarMovies] = useState();
 	const [movieTrailer, setMovieTrailer] = useState();
 	const [IsLoading, setIsLoading] = useState(true);
@@ -20,20 +17,22 @@ const MoviePage = () => {
 	useEffect(() => {
 		const fetchMovie = async () => {
 			try {
-				const response = await getMovieById(movieId);
-				const { results } = await getSimilarMovies(movieId);
-				const trailer = await getMovieTrailer(movieId);
-				setMovie(response);
+				const similarMoviesResponse = await getSimilarMovies(movie.id);
+				const trailer = await getMovieTrailer(movie.id);
 				setMovieTrailer(trailer.results[0]);
-				setSimilarMovies(results);
+				setSimilarMovies(similarMoviesResponse.results);
 				setIsLoading(false);
 			} catch (error) {
-				console.log(`Failed to fetch movie:`, movieId);
+				setIsLoading(false);
 			}
 		};
 
 		fetchMovie();
-	}, [movieId]);
+	}, [movie]);
+
+	if (movie.success === false) {
+		return <ErrorElement text="Ops... Filme não encontrado!" />;
+	}
 
 	return (
 		<main className="container">
