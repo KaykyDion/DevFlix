@@ -13,6 +13,7 @@ const MoviePage = () => {
 	const [similarMovies, setSimilarMovies] = useState();
 	const [movieTrailer, setMovieTrailer] = useState();
 	const [IsLoading, setIsLoading] = useState(true);
+	window.scrollTo({ top: 0 });
 
 	useEffect(() => {
 		const fetchMovie = async () => {
@@ -54,7 +55,7 @@ const MoviePage = () => {
 						trailer={movieTrailer}
 					/>
 					<MovieList
-						title="Relacionados"
+						title="Similares"
 						movieList={similarMovies}
 						id="similars"
 					/>
