@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import PropTypes from "prop-types";
 import {
 	ModalOverlay,
@@ -11,23 +11,13 @@ import {
 	IconButton,
 } from "./styles";
 import themeIcon from "../../assets/images/theme.png";
-import languagesIcon from "../../assets/images/languages.png";
 import SwitchButton from "../SwitchButton";
 import { ToggleThemeContext } from "../../contexts/ToggleThemeContext";
 
 const Configurations = ({ isOpen, onClose }) => {
-	const [language, setLanguage] = useState("pt");
-	const { usingDarkTheme, setUsingDarkTheme } = useContext(ToggleThemeContext);
+	const { usingDarkTheme, handleThemeChange } = useContext(ToggleThemeContext);
 
 	if (!isOpen) return null;
-
-	const handleLanguageChange = () => {
-		setLanguage((prevLanguage) => (prevLanguage === "pt" ? "en" : "pt"));
-	};
-
-	const handleThemeChange = () => {
-		setUsingDarkTheme(!usingDarkTheme);
-	};
 
 	return (
 		<ModalOverlay>
@@ -44,13 +34,6 @@ const Configurations = ({ isOpen, onClose }) => {
 							handleToggle={handleThemeChange}
 						/>
 						<IconText>Tema Claro</IconText>
-					</IconItem>
-					<IconItem>
-						<IconButton>
-							<img src={languagesIcon} alt="Idiomas" />
-						</IconButton>
-						<SwitchButton onClick={handleLanguageChange} />
-						<IconText>{language === "pt" ? "Português" : "English"}</IconText>
 					</IconItem>
 				</IconContainer>
 			</ModalContainer>
